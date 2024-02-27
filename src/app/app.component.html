@@ -1,27 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-  <div id="contenedor">
+
+  <div id="contenedor" class="d-flex flex-column vh-100 ">
     <div class="container">
-      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom" [style.background]="header_color">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
           <span class="fs-4">{{title}}</span>
         </a>
   
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Productos</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Crear productos</a></li>
+          <li class="nav-item"><a [routerLink]="['/']" [routerLinkActive]="['activated']" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a [routerLink]="['/products']" [routerLinkActive]="['activated']" class="nav-link">Productos</a></li>
+          <li class="nav-item"><a [routerLink]="['/add-product']" [routerLinkActive]="['activated']" class="nav-link">Crear productos</a></li>
         </ul>
       </header>
     </div>
     
     <section id="main" class="col-lg-12">
-      <!-- Componente actual-->
+          
+      <router-outlet ></router-outlet>
+        
     </section>
+    
     <div class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 Company, Inc</p>
+        <p class="col-md-4 mb-0 text-body-secondary">&copy; 2024 Los HUEVOS de Eddie, Inc</p>
     
         <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
@@ -37,4 +39,3 @@
       </footer>
     </div>
   </div>
-</html>

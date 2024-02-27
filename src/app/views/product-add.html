@@ -1,0 +1,38 @@
+<form #formProduct="ngForm" (ngSubmit)="onSubmit()" class="form-signin col-lg-6 mx-auto">
+        <div class=" text-center mb-4">
+          <img charset="UTF-8" class="mb-4" width="48" height="48" src="https://img.icons8.com/color/48/keroppi.png" alt="keroppi">
+          <h1 class="h3 mb-3 font-weight-normal">Add a new product</h1>
+        </div>
+        <br>
+        <div class="form-label-group">
+            <label >Name
+                <span *ngIf="!nombre.valid && nombre.touched" class="badge rounded-pill bg-warning text-dark">Inserting a name is mandatory!</span>
+            </label>
+            <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="product.nombre" class="form-control" placeholder="Name" required autofocus>
+            
+            
+        </div>
+        <br>
+        <div class="form-label-group">
+            <label >Description
+                <span *ngIf="!description.valid && description.touched" class="badge rounded-pill bg-warning text-dark">Inserting a description is mandatory!</span>
+            </label>
+            <input type="textarea"  #description="ngModel" name="description" [(ngModel)]="product.description" class="form-control" placeholder="Description" required>
+          
+        </div>
+        <br>
+        <div class="form-label-group">
+            <label >Price
+                <span *ngIf="!precio.valid && precio.touched" class="badge rounded-pill bg-warning text-dark">The price is incorrect!</span>
+            </label>
+            <input type="text"  #precio="ngModel" name="precio" [(ngModel)]="product.precio" class="form-control" placeholder="Price" required
+            pattern="[0-9]+">
+            {{product.precio}}
+          
+        </div>
+        <br>
+        <label class="form-label" for="customFile">Image</label>
+        <input type="file" class="form-control" (change)="fileChangeEvent($event)" />
+        <br>
+        <button data-mdb-ripple-init type="submit" [disabled]="!formProduct.form.valid" class="btn btn-primary btn-block">Crea un nuevo producto</button>
+</form>

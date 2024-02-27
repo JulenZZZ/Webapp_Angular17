@@ -1,3 +1,17 @@
 #contenedor{
     background-color: darkgray;
 }
+
+
+
+.activated{
+    text-decoration: none !important;
+    background-color: darkblue !important;
+   
+}
+
+
+
+.nav-link:hover{
+    background-color: grey ;
+}
