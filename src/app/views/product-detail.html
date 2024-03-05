@@ -1,0 +1,13 @@
+<div *ngIf="!product">
+    <h3>Product loading...</h3>
+</div>
+<div class="container col-lg-9">
+    <div *ngIf="product">
+    <h3>{{product.nombre}}</h3>
+    <p><strong>{{product.precio}}€</strong></p> 
+        <p>{{product.description}}</p>
+    </div>
+    <div class="col-lg-3" *ngIf="product.imagen">
+        <img src="http://localhost/angular17_backend/uploads/{{product.imagen}}" class="producto_imagen">
+    </div>
+</div>

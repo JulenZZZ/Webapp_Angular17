@@ -7,12 +7,12 @@
                 Gestiona tus productos con la aplicacion web SPA creada con Angular desde cero          
             </p>
             <div class="d-inline-flex gap-2 mb-5">
-                <button class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">
-                  Ver productos
+                <button  class="d-inline-flex align-items-center btn btn-warning btn-lg px-4 rounded-pill" type="button">
+                  <a [routerLink]="['/products']">Ver productos</a>
                 
                 </button>
-                <button class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
-                  Anadir productos
+                <button  class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
+                  <a [routerLink]="['/add-product']"> Anadir productos</a> 
                 </button>
               </div>
             </div>

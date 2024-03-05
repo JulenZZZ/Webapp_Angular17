@@ -1,8 +1,9 @@
+<div class=" text-center mb-4">
+    <img charset="UTF-8" class="mb-4" width="48" height="48" src="https://img.icons8.com/color/48/keroppi.png" alt="keroppi">
+    <h1 class="h3 mb-3 font-weight-normal">{{title}}</h1>
+</div>
 <form #formProduct="ngForm" (ngSubmit)="onSubmit()" class="form-signin col-lg-6 mx-auto">
-        <div class=" text-center mb-4">
-          <img charset="UTF-8" class="mb-4" width="48" height="48" src="https://img.icons8.com/color/48/keroppi.png" alt="keroppi">
-          <h1 class="h3 mb-3 font-weight-normal">Add a new product</h1>
-        </div>
+        
         <br>
         <div class="form-label-group">
             <label >Name
@@ -27,12 +28,16 @@
             </label>
             <input type="text"  #precio="ngModel" name="precio" [(ngModel)]="product.precio" class="form-control" placeholder="Price" required
             pattern="[0-9]+">
-            {{product.precio}}
           
         </div>
         <br>
         <label class="form-label" for="customFile">Image</label>
+        <div *ngIf="is_edit">
+            <img src="http://localhost/angular17_backend/uploads/{{product.imagen}}"
+            width="60">
+        </div>
         <input type="file" class="form-control" (change)="fileChangeEvent($event)" />
+        
         <br>
-        <button data-mdb-ripple-init type="submit" [disabled]="!formProduct.form.valid" class="btn btn-primary btn-block">Crea un nuevo producto</button>
+        <button data-mdb-ripple-init type="submit" [disabled]="!formProduct.form.valid" class="btn btn-primary btn-block">{{title}}</button>
 </form>

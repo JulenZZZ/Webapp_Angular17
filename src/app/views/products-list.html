@@ -1,63 +1,45 @@
 
-<body>
+
     <div class="container my-5">
         <div class="p-5 text-center bg-body-tertiary rounded-3">
             <h3>{{title}}</h3>
+            <br>
             <div *ngIf="!products">
                 Cargando...
             </div>
-            <div class="text-center container">
-                <div class="list-group" *ngFor="let product of products">
-                    <a class="list-group-item list-group-item-action flex-column align-items-start">
-                      <div class="w-100 justify-content-between text-center">
-                        <h5 class="mb-1">{{product.nombre}}</h5>
+            <div *ngIf="products" class="text-center container">
+                <div class="row">
+                    <div class="col-lg-3" *ngFor="let product of products">
+                      <div class="thumbnail">
+                        <div *ngIf="product.imagen">
+                          <img src="http://localhost/angular17_backend/uploads/{{product.imagen}}" class="producto_imagen">
+                        </div>
+                        <div *ngIf="!product.imagen">
+                          <div class="imagen_relleno"></div>
+                        </div>
+                        <div class="caption">
+                          <h3>{{product.nombre}}</h3>
+                          <p>{{product.precio}}€</p>
+
+                          <div *ngIf="confirmDelete != product.id">
+                            <a [routerLink]="['/product-details', product.id]" id="botones" class="btn btn-sm btn-primary">Ver</a>
+                            <a [routerLink]="['/product-edit', product.id]" id="botones" class="btn btn-sm btn-warning">Editar</a>
+                            <a (click)="deleteConfirm(product.id)" id="botones" class="btn btn-sm btn-danger">Borrar</a>
+                          </div>  
+
+                          <div class="seguro" *ngIf="confirmDelete == product.id">
+                              
+                              <a (click)="onDeleteProduct(product.id)" class="btn btn-sm btn-primary">Delete product</a>
+                              <a (click)="cancelDelete()" class="btn btn-sm btn-warning">No</a>
+                          </div>
+                          
+                        </div>
                       </div>
-                      <p class="mb-1">{{product.description}}</p>
-                      <small>{{product.precio}}€ </small>
-                    </a>
-                    
+                    </div>
                   </div>
             </div>
         </div>
     </div>
-    <section style="background-color: #eee;">
-        <div class="text-center container py-5">
-          <h4 class="mt-4 mb-5"><strong>Bestsellers</strong></h4>
-      
-          <div class="row" *ngFor="let product of products">
-            <div class="col-lg-4 col-md-12 mb-4">
-              <div class="card">
-                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                  data-mdb-ripple-color="light">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/belt.webp"
-                    class="w-100" />
-                  <a href="#!">
-                    <div class="mask">
-                      <div class="d-flex justify-content-start align-items-end h-100">
-                        <h5><span class="badge bg-primary ms-2">New</span></h5>
-                      </div>
-                    </div>
-                    <div class="hover-overlay">
-                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                    </div>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <a href="" class="text-reset">
-                    <h5 class="card-title mb-3">Product name</h5>
-                  </a>
-                  <a href="" class="text-reset">
-                    <p>Category</p>
-                  </a>
-                  <h6 class="mb-3">$61.99</h6>
-                </div>
-              </div>
-            </div>
-      
-      
-            
-          </div>
-        </div>
-      </section>
+    
 
-</body>
+

@@ -24,6 +24,16 @@ export class ProductsService {
           })
         );
       }
+    getProduct(id: string): Observable<any> {
+      
+        return this._http.get(this.url + 'products/' + id).pipe(
+          tap(data => console.log('Data:', data)),
+          catchError(error => {
+            console.log('Error:', error);
+            return throwError(error);
+          })
+        );
+    }
 
     addProduct(product: Product){
       let json = JSON.stringify(product);
@@ -57,4 +67,18 @@ export class ProductsService {
         xhr.send(formData);
       });
     }
+
+  editProduct(id: string, product: Product) : Observable<any>{
+    let json = JSON.stringify(product);
+    let params = 'json=' + json;
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this._http.post(this.url + 'update-product/' + id, params, {headers: headers})
+      .pipe(map(res => res));
+  }
+
+  deleteProduct(id: string) : Observable<any>{
+    return this._http.get(this.url + 'delete-product/' + id)
+      .pipe(map(res => res));
+  }
 }

@@ -21,6 +21,7 @@ export class ProductAddComponent {
   public product: Product;
   public filesToUpload: Array<File> = [];
   public resultUpload: any;
+  public is_edit: boolean = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -48,12 +49,12 @@ export class ProductAddComponent {
 
     console.log(this.product);
 
-    if ( this.filesToUpload.length >= 1) {
-      this._productsService.makeFileRequest(GLOBAL.url+'upload-image', [], this.filesToUpload).then((result: any) => {
+    if ( this.filesToUpload && this.filesToUpload.length >= 1) {
+        this._productsService.makeFileRequest(GLOBAL.url+'upload-image', [], this.filesToUpload).then((result: any) => {
         console.log('Result:', result);
 
         this.resultUpload = result;
-        this.product.imagen = this.resultUpload.filename;
+        this.product.imagen = this.resultUpload.file_name;
         this.saveProduct();
         },
         error => {
@@ -61,6 +62,7 @@ export class ProductAddComponent {
         }
       );
     } else {
+      
       this.saveProduct();
     }
 
@@ -70,7 +72,7 @@ export class ProductAddComponent {
   saveProduct() {
     this._productsService.addProduct(this.product).subscribe(
       (response: any) => {
-        if (response.code == 200) {
+        if (response) { 
           this._router.navigate(['/products']);
         }else{
           console.log('Error:', response);

@@ -1,8 +1,11 @@
 import { Component } from "@angular/core";
+import { RouterModule } from "@angular/router";
+
 
 @Component({
     selector: "error",
     templateUrl: "../views/error.html",
+    imports: [RouterModule],
     standalone: true
 })
 
