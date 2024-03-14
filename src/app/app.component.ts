@@ -8,6 +8,18 @@ import { GLOBAL} from './services/global';
 import { HttpClientModule,provideHttpClient } from '@angular/common/http';
 import { ProductDetailsComponent } from './components/product-details.component';
 import { ProductEditComponent } from './components/product-edit.component';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { KendoComponent } from './components/kendo.component';
+import { IconsModule } from '@progress/kendo-angular-icons';
+import { NavigationModule } from '@progress/kendo-angular-navigation';
+import { IndicatorsModule } from '@progress/kendo-angular-indicators';
+import {PanelBarModule } from '@progress/kendo-angular-layout';
+import { cartIcon, userIcon, SVGIcon } from '@progress/kendo-svg-icons';
+import { ButtonModule } from '@progress/kendo-angular-buttons';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+
+
 
 
 
@@ -16,7 +28,8 @@ import { ProductEditComponent } from './components/product-edit.component';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet, HomeComponent, ErrorComponent, RouterModule, ProductsListComponent, HttpClientModule,
-    ProductDetailsComponent, ProductEditComponent],
+    ProductDetailsComponent, ProductEditComponent,DateInputsModule,KendoComponent,NavigationModule,IconsModule, IndicatorsModule
+  ,PanelBarModule,ButtonModule],
   providers: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -27,5 +40,8 @@ export class AppComponent {
 
   constructor() {
     this.header_color = GLOBAL.header_color; 
+
   }
+  public userIcon: SVGIcon = userIcon;
+  public cartIcon: SVGIcon = cartIcon;
 }

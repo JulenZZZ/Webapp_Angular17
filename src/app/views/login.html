@@ -1,0 +1,41 @@
+<div class="example">
+    <form class="k-form k-form-md" [formGroup]="form">
+      <fieldset class="k-form-fieldset">
+        <br>
+        <legend class="k-form-legend">Your account</legend>
+
+        <kendo-avatar initials="EG" width="80px" height="80px" shape="circle"></kendo-avatar>
+        <kendo-formfield>
+          <kendo-label [for]="username" text="Username"></kendo-label>
+          <kendo-textbox formControlName="username" [clearButton]="true" #username required></kendo-textbox>
+
+          <kendo-formhint>Your Username</kendo-formhint>
+          <kendo-formerror>Error: Username is required</kendo-formerror>
+        </kendo-formfield>
+        <kendo-formfield>
+          <kendo-label [for]="password" text="Password"> </kendo-label>
+          <kendo-textbox formControlName="password" #password required [clearButton]="true">
+            <ng-template kendoTextBoxSuffixTemplate>
+              <button kendoButton look="clear" (click)="toggleVisibility()">
+                <kendo-svgicon [icon]="currentIcon"></kendo-svgicon>
+              </button>
+            </ng-template>
+          </kendo-textbox>
+
+          <kendo-formhint>Your password</kendo-formhint>
+          <kendo-formerror>Error: Password is required</kendo-formerror>
+        </kendo-formfield>
+
+        <a [routerLink]="['/create-acc']">
+          <kendo-formhint>Do you want to create an account?</kendo-formhint>
+        </a>
+
+        <div class="k-form-buttons">
+          <button kendoButton themeColor="primary" [disabled]="!form.valid" (click)="login()">
+            Login
+          </button>
+          <button kendoButton (click)="clearForm()">Clear</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>

@@ -1,6 +1,7 @@
 
   <div id="contenedor" class="d-flex flex-column vh-100 ">
     <div class="container">
+      <!--
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom" [style.background]="header_color">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
@@ -11,8 +12,51 @@
           <li class="nav-item"><a [routerLink]="['/']" [routerLinkActive]="['activated']" class="nav-link" aria-current="page">Home</a></li>
           <li class="nav-item"><a [routerLink]="['/products']" [routerLinkActive]="['activated']" class="nav-link">Productos</a></li>
           <li class="nav-item"><a [routerLink]="['/add-product']" [routerLinkActive]="['activated']" class="nav-link">Crear productos</a></li>
+          <li class="nav-item"><a [routerLink]="['/kendo']" [routerLinkActive]="['activated']" class="nav-link">KendoUI</a></li>
         </ul>
       </header>
+      -->
+      <kendo-appbar position="top">
+        <kendo-appbar-section>
+            <!-- logo -->
+        </kendo-appbar-section>
+
+        <kendo-appbar-section>
+            <h1 class="title">{{title}}</h1>
+        </kendo-appbar-section>
+
+        <kendo-appbar-spacer width="32px"></kendo-appbar-spacer>
+
+        <kendo-appbar-section>
+            <ul>
+                <li><span><a [routerLink]="['/']">Home</a></span></li>
+                <li><span><a [routerLink]="['/products']">Productos</a></span></li>
+                <li><span><a [routerLink]="['/add-product']">Crear producto</a></span></li>
+                <li><span><a [routerLink]="['/kendo']">Kendo</a></span></li>
+
+            </ul>
+        </kendo-appbar-section>
+
+        <kendo-appbar-spacer></kendo-appbar-spacer>
+
+        <kendo-appbar-section class="actions">
+            <kendo-badge-container>
+                <button kendoButton [look]="'flat'">
+                    <a [routerLink]="['/login']"><kendo-svgicon [icon]=userIcon></kendo-svgicon></a>
+                </button>
+            </kendo-badge-container>
+            <span class="k-appbar-separator"></span>
+            
+        </kendo-appbar-section>
+
+          <kendo-appbar-section class="actions">
+            <kendo-badge-container>
+              <button kendoButton [look]="'flat'">
+                  <kendo-svgicon [icon]=cartIcon></kendo-svgicon>
+              </button>
+          </kendo-badge-container>
+          </kendo-appbar-section>
+        </kendo-appbar>
     </div>
     
     <section id="main" class="col-lg-12">
@@ -20,6 +64,8 @@
       <router-outlet ></router-outlet>
         
     </section>
+
+    
     
     <div class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

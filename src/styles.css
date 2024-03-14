@@ -1,3 +1,4 @@
+
 #contenedor{
     background-color: darkgray;
 }
@@ -9,13 +10,6 @@
     background-color: darkblue !important;
    
 }
-
-
-
-.nav-link:hover{
-    background-color: grey ;
-}
-
 .imagen_relleno{
     background-color: grey;
     width: 100%;
@@ -34,4 +28,45 @@
 #botones{
     border-style: solid;
     margin-right: 5px;
+}
+
+.title {
+    font-size: 18px;
+    margin: 0;
+  }
+  kendo-badge-container {
+    margin-right: 8px;
+  }
+  ul {
+    font-size: 14px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  li {
+    margin: 0 9px;
+  }
+  li:hover {
+    cursor: pointer;
+    color: #d6002f;
+  }
+  .actions .k-button {
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+.k-avatar {
+    margin-left: 80px;
+    font-size: 30px;
+}
+.example {
+    display: flex;
+    justify-content: center;
+}
+.k-form {
+    width: 240px;
 }
