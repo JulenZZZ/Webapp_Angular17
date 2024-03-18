@@ -1,113 +1,85 @@
-<div class="example">
-    <form class="k-form k-form-md" [formGroup]="form">
-      <h5>BOOK YOUR DREAM VACATION TODAY</h5>
+
+<div class="example-wrap">
+  <form class="k-form k-form-md" [formGroup]="registerForm">
+    <fieldset class="k-form-fieldset">
+      <legend class="k-form-legend">User Details</legend>
       <kendo-formfield>
-        <kendo-label [for]="fullName" text="Full Name"></kendo-label>
+        <kendo-label
+          labelCssClass="k-form-label"
+          [for]="firstName"
+          text="First Name"
+        ></kendo-label>
         <kendo-textbox
-          formControlName="fullName"
-          [clearButton]="true"
-          #fullName
+          formControlName="firstName"
+          #firstName
           required
         ></kendo-textbox>
 
-        <kendo-formerror>Error: Full Name is required</kendo-formerror>
-      </kendo-formfield>
-
-      <kendo-formfield>
-        <kendo-label [for]="email" text="Email"></kendo-label>
-        <kendo-textbox
-          formControlName="email"
-          [clearButton]="true"
-          #email
-          required
-        ></kendo-textbox>
-
-        <kendo-formerror *ngIf="form.controls['email'].errors?.['required']"
-          >Error: Email is required</kendo-formerror
-        >
-        <kendo-formerror *ngIf="form.controls['email'].errors?.['email']"
-          >Error: Not valid email format</kendo-formerror
-        >
-      </kendo-formfield>
-
-      <kendo-formfield>
-        <kendo-label [for]="phoneNumber" text="Phone Number"></kendo-label>
-        <kendo-maskedtextbox
-          #phoneNumber
-          formControlName="phoneNumber"
-          [mask]="phoneNumberMask"
-          [value]="phoneNumberValue"
-        ></kendo-maskedtextbox>
-        <kendo-formerror>
-          <div *ngIf="form.controls['phoneNumber'].valid">
-            Error: Not a valid phone number format
-          </div>
-            <div *ngIf="form.controls['phoneNumber'].errors?.['required']">
-            Error: Phone number is required
-          </div>
-        </kendo-formerror>
-      </kendo-formfield>
-
-      <kendo-formfield>
-          <kendo-label [for]="date" text="Birth Date"></kendo-label>
-          <kendo-datepicker #date formControlName="date"></kendo-datepicker>
-
-          <kendo-formhint align="end"
-            >Hint: Hint message aligned end</kendo-formhint
-          >
-        </kendo-formfield>
-
-        <kendo-formfield>
-          <kendo-label
-            [for]="numberOfNights"
-            text="Number of Nights"
-          ></kendo-label>
-          <kendo-numerictextbox
-            #numberOfNights
-            formControlName="numberOfNights"
-            [min]="0"
-          ></kendo-numerictextbox>
-          <kendo-formerror>Error: required</kendo-formerror>
-        </kendo-formfield>
-    
-
-      
-
-      <kendo-formfield>
-        <div class="k-form-field-checkbox-wrap">
-          <input
-            kendoCheckBox
-            id="terms"
-            type="checkbox"
-            formControlName="terms"
-          />
-          <kendo-label
-            class="k-checkbox-label"
-            for="terms"
-            text="I agree with Тerms and Conditions"
-          ></kendo-label>
-        </div>
-        <kendo-formerror>Error: This field is required</kendo-formerror>
+        <kendo-formhint>Your first name</kendo-formhint>
+        <kendo-formerror>Error: First name is required</kendo-formerror>
       </kendo-formfield>
 
       <kendo-formfield>
         <kendo-label
-          [for]="comments"
-          text="Comments"
-          [optional]="true"
+          labelCssClass="k-form-label"
+          [for]="lastName"
+          text="Last Name"
         ></kendo-label>
-        <kendo-textarea
-          #comments
-          formControlName="comments"
-          resizable="vertical"
-        ></kendo-textarea>
+        <kendo-textbox
+          formControlName="lastName"
+          #lastName
+          required
+        ></kendo-textbox>
+
+        <kendo-formhint>Your last name</kendo-formhint>
+        <kendo-formerror>Error: Last name is required</kendo-formerror>
+      </kendo-formfield>
+
+      
+
+      <kendo-formfield>
+        <kendo-label
+          labelCssClass="k-form-label"
+          [for]="email"
+          text="Email"
+        ></kendo-label>
+        <kendo-textbox
+          formControlName="email"
+          #email
+          required
+        ></kendo-textbox>
+
+        <kendo-formhint>Your active email</kendo-formhint>
+        <kendo-formerror>Error: Not valid email format</kendo-formerror>
+      </kendo-formfield>
+
+      <kendo-formfield>
+        <div class="k-checkbox-wrap">
+          <input
+            #acceptNews
+            type="checkbox"
+            kendoCheckBox
+            formControlName="acceptNews"
+          />
+          <kendo-label
+            [for]="acceptNews"
+            class="k-checkbox-label"
+            text="I want to receive notifications"
+          ></kendo-label>
+        </div>
+
+        <kendo-formhint
+          >You will receive our latest updates and promotions on your
+          email</kendo-formhint
+        >
       </kendo-formfield>
 
       <div class="k-form-buttons">
         <button kendoButton themeColor="primary" (click)="submitForm()">
-          Send Reservation Request
+          Submit
         </button>
         <button kendoButton (click)="clearForm()">Clear</button>
       </div>
-    </form>
-  </div>
+    </fieldset>
+  </form>
+</div>

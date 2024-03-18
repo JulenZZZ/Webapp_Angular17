@@ -1,9 +1,11 @@
 
-#contenedor{
-    background-color: darkgray;
+body{
+  background-color: darkgrey;
 }
 
-
+.footer{
+    
+}
 
 .activated{
     text-decoration: none !important;
@@ -15,6 +17,7 @@
     width: 100%;
     height: 200px;
     box-shadow: 8px 8px 5px grey;
+    border-style: solid;
 }
 
 .producto_imagen{
@@ -59,14 +62,17 @@
     color: inherit;
   }
 
-.k-avatar {
-    margin-left: 80px;
-    font-size: 30px;
-}
-.example {
+  .login{
+    display: flex; 
+    justify-content: center;
+     align-items: center;
+    
+  }
+
+  .example-wrap {
     display: flex;
     justify-content: center;
-}
-.k-form {
-    width: 240px;
-}
+  }
+  .k-form {
+    width: 400px;
+  }

@@ -1,3 +1,4 @@
+
 import { Component, ViewEncapsulation } from "@angular/core";
 import { Validators, FormGroup, FormControl } from "@angular/forms";
 import { TextBoxComponent } from "@progress/kendo-angular-inputs";
@@ -7,7 +8,6 @@ import { LabelModule } from "@progress/kendo-angular-label";
 import { InputsModule } from "@progress/kendo-angular-inputs";
 import { LayoutModule } from "@progress/kendo-angular-layout";
 import { ButtonsModule } from "@progress/kendo-angular-buttons";
-import { provideAnimations } from "@angular/platform-browser/animations";
 import { CommonModule } from "@angular/common";
 
 
@@ -16,60 +16,28 @@ import { CommonModule } from "@angular/common";
     templateUrl: "../views/new-acc.html",
     standalone: true,
     imports:[FormsModule, ReactiveFormsModule,DateInputsModule,LabelModule,InputsModule,LayoutModule,ButtonsModule,
-    FormsModule],
-    providers: [
-      provideAnimations() // Add this line to enable animations
-    ],
+    FormsModule,CommonModule],
+    providers: [],
     encapsulation: ViewEncapsulation.None
 })
 
 export class NewAccountComponent {
-    public phoneNumberValue: string = "";
-    public phoneNumberMask: string = "(999) 000-00-00-00";
-  
-    public form: FormGroup;
-  
-    public data: any = {
-      fullName: "",
-      email: "",
-      phoneNumber: this.phoneNumberValue,
-      arrivalDate: null,
-      numberOfNights: null,
-      numberOfGuests: null,
-      terms: false,
-      comments: "",
-    };
-  
-    constructor() {
-      this.form = new FormGroup({
-        fullName: new FormControl(this.data.fullName, [Validators.required]),
-        email: new FormControl(this.data.email, [
-          Validators.required,
-          Validators.email,
-        ]),
-        phoneNumber: new FormControl(this.data.phoneNumber, [
-          Validators.required,
-        ]),
-        arrivalDate: new FormControl(this.data.arrivalDate, [
-          Validators.required,
-        ]),
-        numberOfNights: new FormControl(this.data.numberOfNights, [
-          Validators.required,
-        ]),
-        numberOfGuests: new FormControl(this.data.numberOfGuests, [
-          Validators.required,
-          Validators.max(5),
-        ]),
-        terms: new FormControl(this.data.terms, [Validators.requiredTrue]),
-        comments: new FormControl(this.data.comments),
-      });
-    }
-  
-    public submitForm(): void {
-      this.form.markAllAsTouched();
-    }
-  
-    public clearForm(): void {
-      this.form.reset();
-    }
+  public min: Date = new Date(1917, 0, 1);
+  public max: Date = new Date(2020, 4, 31);
+
+  public registerForm: FormGroup = new FormGroup({
+    firstName: new FormControl(),
+    lastName: new FormControl(),
+    birthDate: new FormControl(new Date(2000, 10, 10)),
+    email: new FormControl("", Validators.email),
+    acceptNews: new FormControl(),
+  });
+
+  public submitForm(): void {
+    this.registerForm.markAllAsTouched();
+  }
+
+  public clearForm(): void {
+    this.registerForm.reset();
+  }
 }
